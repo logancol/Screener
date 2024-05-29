@@ -12,7 +12,8 @@
       "backgroundColor": "#ffffff"
     },
     "ios": {
-      "supportsTablet": true
+      "supportsTablet": true,
+      "bundleIdentifier": "com.lcolson1.Screener"
     },
     "android": {
       "adaptiveIcon": {
@@ -22,6 +23,18 @@
     },
     "web": {
       "favicon": "./assets/favicon.png"
+    },
+    "extra": {
+      "eas": {
+        "projectId": "300b0cbd-10bb-4c1d-944e-a43ed09b57bf"
+      }
+    },
+    "owner": "lcolson1",
+    "runtimeVersion": {
+      "policy": "appVersion"
+    },
+    "updates": {
+      "url": "https://u.expo.dev/300b0cbd-10bb-4c1d-944e-a43ed09b57bf"
     }
   }
 }
