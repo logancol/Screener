@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { StyleSheet, Animated, Text, View, ImageBackground } from 'react-native';
+import { StyleSheet, Animated, Text, View, ImageBackground, SafeAreaView } from 'react-native';
 
 const FadeInOutText = ({ text, duration, delay }) => {
   const [fadeAnim] = useState(new Animated.Value(0));
@@ -33,17 +33,20 @@ export default function main() {
   const caption = displayCaption()
   
   return (
-    <>
-    <ImageBackground
-      source={require('./assets/gradientwpp.png')}
-      style={styles.background}
-    >
-      <View style={styles.container}>
-      {caption.map(paragraph => <Text>{paragraph}</Text>)}
-      </View> 
-    </ImageBackground> 
-    </>
-  )
+    <SafeAreaView style={styles.safeArea}>
+      <ImageBackground
+        source={require('./assets/1.png')}
+        style={styles.background}
+        resizeMode="contain" // Adjust the resize mode to contain
+      >
+        <View style={styles.container}>
+          {caption.map((paragraph, index) => (
+            <Text key={index} style={styles.text}>{paragraph}</Text>
+          ))}
+        </View>
+      </ImageBackground>
+    </SafeAreaView>
+  );
  
 }
 
@@ -78,7 +81,7 @@ function displayCaption() { //caption displayed when app is activated
     }
   }
 
-  
+  console.log(selectedCaptionLineByLine)
   return (
     selectedCaptionLineByLine
   )
@@ -92,10 +95,13 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
     alignItems: 'center',
   },
+  safeArea: {
+    flex: 1, // Ensure the SafeAreaView covers the entire screen
+  },
   background: {
-    flex: 1,
-    resizeMode: 'cover',
-    justifyContent: 'center',
+    flex: 1, // Ensure the ImageBackground covers the entire screen
+    justifyContent: 'center', // Center the content vertically
+    alignItems: 'center', // Center the content horizontally
   },
   text: {
     fontSize: 18,
